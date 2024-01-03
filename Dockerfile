@@ -1,9 +1,9 @@
 FROM quay.io/keycloak/keycloak:22.0.1 as builder
 
-ENV KC_HEALTH_ENABLED=true
+#ENV KC_HEALTH_ENABLED=true
 ENV KC_FEATURES=token-exchange
-ENV KC_DB=postgres
-ENV KC_HTTP_RELATIVE_PATH="/auth"
+#ENV KC_DB=postgres
+#ENV KC_HTTP_RELATIVE_PATH="/auth"
 
 # Install custom providers
 
@@ -11,7 +11,7 @@ ENV KC_HTTP_RELATIVE_PATH="/auth"
 ADD --chown=keycloak:keycloak https://github.com/klausbetz/apple-identity-provider-keycloak/releases/download/1.7.0/apple-identity-provider-1.7.0.jar /opt/keycloak/providers/apple-identity-provider-1.7.0.jar
 
 # build optimized image
-RUN /opt/keycloak/bin/kc.sh build 
+#RUN /opt/keycloak/bin/kc.sh build 
 
 FROM quay.io/keycloak/keycloak:22.0.1
 
