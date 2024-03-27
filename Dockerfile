@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:22.0.1 as builder
+FROM quay.io/keycloak/keycloak:24.0.2 as builder
 
 #ENV KC_HEALTH_ENABLED=true
 ENV KC_FEATURES=token-exchange
@@ -12,7 +12,7 @@ ADD --chown=keycloak:keycloak https://github.com/klausbetz/apple-identity-provid
 # build optimized image
 RUN /opt/keycloak/bin/kc.sh build 
 
-FROM quay.io/keycloak/keycloak:22.0.1
+FROM quay.io/keycloak/keycloak:24.0.2
 
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
